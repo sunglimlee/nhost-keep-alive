@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Send a request to Nhost GraphQL
         run: |
-          curl -X POST "https://wikpsinfalhmcetmuaqo.nhost.run/v1/graphql" \
+          curl -X POST "https://wikpsinfalhmcetmuaqo.graphql.us-east-1.nhost.run/v1/graphql" \
           -H "Content-Type: application/json" \
           -d '{"query":"query { __schema { queryType { name } } }"}'
