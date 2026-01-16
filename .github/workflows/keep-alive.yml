@@ -1,0 +1,17 @@
+name: Keep Nhost Database Active
+
+on:
+  schedule:
+    # 매주 일요일 자정에 실행 (Cron: 분 시 일 월 요일)
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # 수동 실행 버튼 활성화
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a request to Nhost GraphQL
+        run: |
+          curl -X POST "https://wikpsinfalhmcetmuaqo.nhost.run/v1/graphql" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"query { __schema { queryType { name } } }"}'
